@@ -2,6 +2,7 @@ package jadx.gui.utils;
 
 import java.awt.Rectangle;
 import java.io.IOException;
+
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
@@ -32,28 +33,28 @@ public class RectangleTypeAdapter {
 				@Override
 				public Rectangle read(JsonReader in) throws IOException {
 					if (in.peek() == JsonToken.NULL) {
-				         in.nextNull();
-				         return null;
+						in.nextNull();
+						return null;
 					}
 					in.beginObject();
 					Rectangle rectangle = new Rectangle();
 					while (in.hasNext()) {
-					       String name = in.nextName();
-					       switch(name) {
-					       	case "x":
-					       		rectangle.x = in.nextInt();
-					       		break;
-					       	case "y":
-					       		rectangle.y = in.nextInt();
-					       		break;
-					       	case "width":
-					       		rectangle.width = in.nextInt();
-					       		break;
-					       	case "height":
-					       		rectangle.height = in.nextInt();
-					       		break;
-					       }
-					     }
+						String name = in.nextName();
+						switch (name) {
+							case "x":
+								rectangle.x = in.nextInt();
+								break;
+							case "y":
+								rectangle.y = in.nextInt();
+								break;
+							case "width":
+								rectangle.width = in.nextInt();
+								break;
+							case "height":
+								rectangle.height = in.nextInt();
+								break;
+						}
+					}
 					in.endObject();
 					return rectangle;
 				}
